@@ -2,4 +2,6 @@
     <string name="app_name">Exemplo_Intents</string>
     <string name="second_activity_message">Olá, Mundo! Sou a segunda activity.</string>
     <string name="start_second_activity">Abrir segunda activity</string>
+    <string name="write_message">Digite a mensagem</string>
+    <string name="send_message">Enviar mensagem para segunda Activity</string>
 </resources>
