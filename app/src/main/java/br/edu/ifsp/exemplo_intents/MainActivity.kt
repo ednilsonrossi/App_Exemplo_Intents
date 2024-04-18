@@ -22,33 +22,37 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     }
 
     override fun onClick(v: View) {
-        if (v == binding.buttonStartSecond) {
-            val mIntent = Intent(this, SecondActivity::class.java)
-            startActivity(mIntent)
-        } else if (v == binding.buttonSendMessage) {
-            val strMessage = binding.edittextInput.text.toString()
-            val numberMessage = 10
+        when (v) {
+            binding.buttonStartSecond -> {
+                val mIntent = Intent(this, SecondActivity::class.java)
+                startActivity(mIntent)
+            }
+            binding.buttonSendMessage -> {
+                val strMessage = binding.edittextInput.text.toString()
+                val numberMessage = 10
 
-//            val mIntent = Intent(this, SecondActivity::class.java)
-//            mIntent.putExtra("TEXT_MESSAGE", strMessage)
-//            mIntent.putExtra("INT_MESSAGE", numberMessage)
-//            startActivity(mIntent)
+    //            val mIntent = Intent(this, SecondActivity::class.java)
+    //            mIntent.putExtra("TEXT_MESSAGE", strMessage)
+    //            mIntent.putExtra("INT_MESSAGE", numberMessage)
+    //            startActivity(mIntent)
 
-//            val person = Person(2004)
+    //            val person = Person(2004)
 
-            val extras = Bundle()
-            extras.putString("TEXT_MESSAGE", strMessage)
-            extras.putInt("INT_MESSAGE", numberMessage)
-//            extras.putSerializable("PERSON", person)
-            val mIntent2 = Intent(this, SecondActivity::class.java)
-            mIntent2.putExtras(extras)
-            startActivity(mIntent2)
-        } else if (v == binding.buttonCall) {
-            val phoneNumber = "01633032330";
-            val mIntent = Intent(Intent.ACTION_DIAL)
-            val uri = Uri.parse("tel:" + phoneNumber)
-            mIntent.setData(uri)
-            startActivity(mIntent)
+                val extras = Bundle()
+                extras.putString("TEXT_MESSAGE", strMessage)
+                extras.putInt("INT_MESSAGE", numberMessage)
+    //            extras.putSerializable("PERSON", person)
+                val mIntent2 = Intent(this, SecondActivity::class.java)
+                mIntent2.putExtras(extras)
+                startActivity(mIntent2)
+            }
+            binding.buttonCall -> {
+                val phoneNumber = "01633032330"
+                val mIntent = Intent(Intent.ACTION_DIAL)
+                val uri = Uri.parse("tel:$phoneNumber")
+                mIntent.setData(uri)
+                startActivity(mIntent)
+            }
         }
     }
 }
