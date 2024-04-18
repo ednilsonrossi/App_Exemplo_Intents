@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Exemplo_Intents</string>
+    <string name="second_activity_message">Olá, Mundo! Sou a segunda activity.</string>
+    <string name="start_second_activity">Abrir segunda activity</string>
+</resources>
