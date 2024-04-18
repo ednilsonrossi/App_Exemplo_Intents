@@ -1,6 +1,7 @@
 package br.edu.ifsp.exemplo_intents
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
@@ -17,13 +18,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         binding.buttonStartSecond.setOnClickListener(this)
         binding.buttonSendMessage.setOnClickListener(this)
+        binding.buttonCall.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
-        if(v == binding.buttonStartSecond){
+        if (v == binding.buttonStartSecond) {
             val mIntent = Intent(this, SecondActivity::class.java)
             startActivity(mIntent)
-        } else if (v == binding.buttonSendMessage){
+        } else if (v == binding.buttonSendMessage) {
             val strMessage = binding.edittextInput.text.toString()
             val numberMessage = 10
 
@@ -32,17 +34,21 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 //            mIntent.putExtra("INT_MESSAGE", numberMessage)
 //            startActivity(mIntent)
 
-            val person = Person(2004)
+//            val person = Person(2004)
 
             val extras = Bundle()
             extras.putString("TEXT_MESSAGE", strMessage)
             extras.putInt("INT_MESSAGE", numberMessage)
-            extras.putSerializable("PERSON", person)
+//            extras.putSerializable("PERSON", person)
             val mIntent2 = Intent(this, SecondActivity::class.java)
             mIntent2.putExtras(extras)
             startActivity(mIntent2)
-
-
+        } else if (v == binding.buttonCall) {
+            val phoneNumber = "01633032330";
+            val mIntent = Intent(Intent.ACTION_DIAL)
+            val uri = Uri.parse("tel:" + phoneNumber)
+            mIntent.setData(uri)
+            startActivity(mIntent)
         }
     }
 }
